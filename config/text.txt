@@ -1,0 +1,34 @@
+Generating a Model:
+
+To generate a Sequelize model, which includes a model file and a migration file:
+npx sequelize-cli model:generate --name User --attributes username:string,email:string
+
+
+Generating a Migration:
+npx sequelize-cli migration:generate --name migration-name
+
+
+Running Migrations:
+To apply pending migrations and update your database schema:
+npx sequelize-cli db:migrate
+
+Undoing Migrations:
+To undo the last migration:
+npx sequelize-cli db:migrate:undo
+
+To undo a specific migration:
+npx sequelize-cli db:migrate:undo --name migration-name
+
+Creating a Seed File:
+To generate a seed file for populating data:
+npx sequelize-cli seed:generate --name seed-name
+
+
+Running All Seeds:
+npx sequelize-cli db:seed:all
+
+Running a specific seed:
+npx sequelize-cli db:seed --seed seed-name
+
+Creating a Migration and Model in One Command:
+npx sequelize-cli model:generate --name User --attributes username:string,email:string
