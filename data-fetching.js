@@ -1,4 +1,5 @@
 const { Product, Client, Order } = require('./models'); 
+const client = require('./models/client');
 
 //** Function to fetch all products
 async function getAllProducts() {
@@ -9,6 +10,24 @@ async function getAllProducts() {
 async function getAllClients() {
   return await Client.findAll();
 }
+
+//**  Function to fetch all clients
+async function getAllOrders() {
+  return await Order.findAll({
+    raw: false,
+    include: [
+      {
+        model: Client,
+        required: true,
+        where: {
+          Email: 'client1@yopmail.com',
+        },
+        as: 'client',
+      },
+    ],
+  });
+}
+
 
 //**  Function to fetch orders by a specific client
 async function getOrdersByClient(clientId) {
@@ -27,5 +46,6 @@ module.exports = {
   getAllProducts,
   getAllClients,
   getOrdersByClient,
-  getOrdersByProduct
+  getOrdersByProduct,
+  getAllOrders
 };
